@@ -1046,9 +1046,11 @@ document.querySelectorAll("[data-memory]").forEach(button => {
     const action = button.dataset.memory;
     const value = Number(calcValue);
 
-    /* MC: Apaga o valor guardado na memória */
+    /* MC: Zera a memória interna E limpa o visor para 0 */
     if(action === "MC"){
       memory = 0;
+      calcValue = "0";
+      calcWaiting = true;
     }
 
     /* MR: Exibe no visor o valor salvo na memória */
