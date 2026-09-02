@@ -593,7 +593,7 @@ font-size:32px
 <div class="result">
 <h3>PREÇO DE VENDA</h3>
 <div id="markupVenda" class="value">R$ 0,00</div>
-<p>Preço calculated</p>
+<p>Preço calculado</p>
 </div>
 
 <div class="result">
@@ -1046,25 +1046,30 @@ document.querySelectorAll("[data-memory]").forEach(button => {
     const action = button.dataset.memory;
     const value = Number(calcValue);
 
+    /* MC: Apaga o valor guardado na memória */
     if(action === "MC"){
       memory = 0;
     }
 
+    /* MR: Exibe no visor o valor salvo na memória */
     if(action === "MR"){
       calcValue = String(memory);
       calcWaiting = true;
     }
 
+    /* MS: Salva o valor da tela na memória */
     if(action === "MS" && Number.isFinite(value)){
       memory = value;
       calcWaiting = true;
     }
 
+    /* M+: Adiciona o valor da tela à memória */
     if(action === "M+" && Number.isFinite(value)){
       memory += value;
       calcWaiting = true;
     }
 
+    /* M-: Subtrai o valor da tela da memória */
     if(action === "M-" && Number.isFinite(value)){
       memory -= value;
       calcWaiting = true;
@@ -1074,7 +1079,7 @@ document.querySelectorAll("[data-memory]").forEach(button => {
   };
 });
 
-/* TECLADO FÍSICO (ISOLADO DOS INPUTS COMERCIAIS) */
+/* TECLADO FÍSICO */
 
 document.addEventListener("keydown", event => {
   if (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA") {
