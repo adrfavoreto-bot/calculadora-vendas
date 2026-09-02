@@ -247,7 +247,8 @@ border-radius:14px;
 background:#075b2c;
 color:white;
 font-size:15px;
-font-weight:bold
+font-weight:bold;
+cursor:pointer
 }
 
 .calc-card{
@@ -367,7 +368,6 @@ font-size:21px
 }
 
 @media(max-width:600px){
-
 .app{
 padding:6px 8px 20px
 }
@@ -399,7 +399,6 @@ width:72px;
 height:72px;
 font-size:32px
 }
-
 }
 </style>
 </head>
@@ -407,16 +406,12 @@ font-size:32px
 <body>
 
 <div class="app">
-
 <div class="container">
 
 <div class="tabs">
 <button id="marginTab" class="active">COMERCIAL</button>
 <button id="calcTab">CALCULADORA</button>
 </div>
-
-
-
 
 <!-- =========================
      ÁREA COMERCIAL
@@ -427,457 +422,207 @@ font-size:32px
 <div class="margin-card">
 
 <div class="commercial-tabs">
-
-<button class="commercialTab active" data-mode="margem">
-MARGEM
-</button>
-
-<button class="commercialTab" data-mode="preco">
-PREÇO
-</button>
-
-<button class="commercialTab" data-mode="desconto">
-DESCONTO
-</button>
-
-<button class="commercialTab" data-mode="markup">
-MARKUP
-</button>
-
+<button class="commercialTab active" data-mode="margem">MARGEM</button>
+<button class="commercialTab" data-mode="preco">PREÇO</button>
+<button class="commercialTab" data-mode="desconto">DESCONTO</button>
+<button class="commercialTab" data-mode="markup">MARKUP</button>
 </div>
-
 
 <!-- MARGEM -->
-
 <div id="mode-margem" class="commercial-mode active">
-
 <div class="field">
-
 <label>CUSTO DO PRODUTO</label>
-
 <div class="input-box">
-
 <span>R$</span>
-
-<input
-id="margemCusto"
-inputmode="decimal"
-autocomplete="off"
-placeholder="0"
->
-
+<input id="margemCusto" inputmode="decimal" autocomplete="off" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="field">
-
 <label>MARGEM DESEJADA (%)</label>
-
 <div class="input-box">
-
 <span>%</span>
-
-<input
-id="margemPercent"
-inputmode="decimal"
-autocomplete="off"
-placeholder="0"
->
-
+<input id="margemPercent" inputmode="decimal" autocomplete="off" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="results">
-
 <div class="result">
-
 <h3>PREÇO DE VENDA</h3>
-
-<div id="margemVenda" class="value">
-R$ 0,00
-</div>
-
+<div id="margemVenda" class="value">R$ 0,00</div>
 <p>Preço sugerido</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>LUCRO</h3>
-
-<div id="margemLucro" class="value">
-R$ 0,00
-</div>
-
+<div id="margemLucro" class="value">R$ 0,00</div>
 <p>Venda − custo</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>MARGEM</h3>
-
-<div id="margemReal" class="value">
-0,00%
-</div>
-
+<div id="margemReal" class="value">0,00%</div>
 <p>Margem obtida</p>
-
 </div>
-
 
 <div class="result">
-
 <h3>MARKUP</h3>
-
-<div id="margemMarkup" class="value">
-0,00x
-</div>
-
+<div id="margemMarkup" class="value">0,00x</div>
 <p>Venda ÷ custo</p>
-
 </div>
-
 </div>
-
 </div>
-
 
 <!-- PREÇO -->
-
 <div id="mode-preco" class="commercial-mode">
-
 <div class="field">
-
 <label>CUSTO DO PRODUTO</label>
-
 <div class="input-box">
-
 <span>R$</span>
-
-<input
-id="precoCusto"
-inputmode="decimal"
-placeholder="0"
->
-
+<input id="precoCusto" inputmode="decimal" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="field">
-
 <label>PREÇO DE VENDA</label>
-
 <div class="input-box">
-
 <span>R$</span>
-
-<input
-id="precoVenda"
-inputmode="decimal"
-placeholder="0"
->
-
+<input id="precoVenda" inputmode="decimal" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="results">
-
 <div class="result">
-
 <h3>MARGEM OBTIDA</h3>
-
-<div id="precoMargem" class="value">
-0,00%
-</div>
-
+<div id="precoMargem" class="value">0,00%</div>
 <p>Lucro ÷ venda</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>LUCRO</h3>
-
-<div id="precoLucro" class="value">
-R$ 0,00
-</div>
-
+<div id="precoLucro" class="value">R$ 0,00</div>
 <p>Venda − custo</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>PREÇO</h3>
-
-<div id="precoResultado" class="value">
-R$ 0,00
-</div>
-
+<div id="precoResultado" class="value">R$ 0,00</div>
 <p>Preço informado</p>
-
 </div>
-
 
 <div class="result">
-
 <h3>MARKUP</h3>
-
-<div id="precoMarkup" class="value">
-0,00x
-</div>
-
+<div id="precoMarkup" class="value">0,00x</div>
 <p>Venda ÷ custo</p>
-
 </div>
-
 </div>
-
 </div>
-
 
 <!-- DESCONTO -->
-
 <div id="mode-desconto" class="commercial-mode">
-
 <div class="field">
-
 <label>PREÇO ORIGINAL</label>
-
 <div class="input-box">
-
 <span>R$</span>
-
-<input
-id="descPreco"
-inputmode="decimal"
-placeholder="0"
->
-
+<input id="descPreco" inputmode="decimal" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="field">
-
 <label>DESCONTO (%)</label>
-
 <div class="input-box">
-
 <span>%</span>
-
-<input
-id="descPercent"
-inputmode="decimal"
-placeholder="0"
->
-
+<input id="descPercent" inputmode="decimal" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="results">
-
 <div class="result">
-
 <h3>PREÇO FINAL</h3>
-
-<div id="descFinal" class="value">
-R$ 0,00
-</div>
-
+<div id="descFinal" class="value">R$ 0,00</div>
 <p>Após desconto</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>DESCONTO</h3>
-
-<div id="descValor" class="value">
-R$ 0,00
-</div>
-
+<div id="descValor" class="value">R$ 0,00</div>
 <p>Valor abatido</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>PERCENTUAL</h3>
-
-<div id="descPercReal" class="value">
-0,00%
+<div id="descPercReal" class="value">0,00%</div>
+<p>Desconto applied</p>
 </div>
-
-<p>Desconto aplicado</p>
-
-</div>
-
 
 <div class="result">
-
 <h3>ECONOMIA</h3>
-
-<div id="descEconomia" class="value">
-R$ 0,00
-</div>
-
+<div id="descEconomia" class="value">R$ 0,00</div>
 <p>Você economiza</p>
-
 </div>
-
 </div>
-
 </div>
-
 
 <!-- MARKUP -->
-
 <div id="mode-markup" class="commercial-mode">
-
 <div class="field">
-
 <label>CUSTO DO PRODUTO</label>
-
 <div class="input-box">
-
 <span>R$</span>
-
-<input
-id="markupCusto"
-inputmode="decimal"
-placeholder="0"
->
-
+<input id="markupCusto" inputmode="decimal" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="field">
-
 <label>MARKUP (%)</label>
-
 <div class="input-box">
-
 <span>%</span>
-
-<input
-id="markupPercent"
-inputmode="decimal"
-placeholder="0"
->
-
+<input id="markupPercent" inputmode="decimal" value="0" onfocus="this.select()">
 </div>
-
 </div>
-
 
 <div class="results">
-
 <div class="result">
-
 <h3>PREÇO DE VENDA</h3>
-
-<div id="markupVenda" class="value">
-R$ 0,00
-</div>
-
+<div id="markupVenda" class="value">R$ 0,00</div>
 <p>Preço calculado</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>LUCRO</h3>
-
-<div id="markupLucro" class="value">
-R$ 0,00
-</div>
-
+<div id="markupLucro" class="value">R$ 0,00</div>
 <p>Venda − custo</p>
-
 </div>
 
-
 <div class="result">
-
 <h3>MARKUP</h3>
-
-<div id="markupReal" class="value">
-0,00%
-</div>
-
+<div id="markupReal" class="value">0,00%</div>
 <p>Percentual aplicado</p>
-
 </div>
-
 
 <div class="result">
-
 <h3>FATOR</h3>
-
-<div id="markupFator" class="value">
-1,00x
-</div>
-
+<div id="markupFator" class="value">1,00x</div>
 <p>Fator de multiplicação</p>
-
 </div>
-
 </div>
-
 </div>
-
 
 <div class="formulas">
-
 <strong>FUNÇÕES COMERCIAIS DIALLI</strong>
-
 <br>
-
-Margem: Custo ÷ (1 − margem/100)
-
-&nbsp; • &nbsp;
-
-Markup: Custo × (1 + markup/100)
-
+Margem: Custo ÷ (1 − margem/100) &nbsp; • &nbsp; Markup: Custo × (1 + markup/100)
 <br>
-
 Desconto: Preço − (Preço × desconto/100)
-
 </div>
 
-
-<button id="clearMargin" class="clear-margin" onclick="calcClear()">
-
+<button id="clearMargin" class="clear-margin">
 ↻ &nbsp; LIMPAR TUDO
-
 </button>
 
 </div>
 
 </section>
-
 
 <!-- =========================
      CALCULADORA
@@ -888,132 +633,55 @@ Desconto: Preço − (Preço × desconto/100)
 <div class="calc-card">
 
 <div class="memory">
-
 <button data-memory="MC">MC</button>
-
 <button data-memory="MR">MR</button>
-
 <button data-memory="M+">M+</button>
-
 <button data-memory="M-">M−</button>
-
 <button data-memory="MS">MS</button>
-
 </div>
-
 
 <div class="display">
-
 <div id="expression" class="expression"></div>
-
-<div id="display" class="result-display">
-0
+<div id="display" class="result-display">0</div>
 </div>
-
-</div>
-
 
 <div class="keys">
-
-<button
-class="clear"
-data-action="clear">
-AC
-</button>
-
-<button
-data-action="back">
-⌫
-</button>
-
-<button
-data-action="percent">
-%
-</button>
-
-<button
-class="operator"
-data-operator="/">
-÷
-</button>
-
+<button class="clear" data-action="clear">AC</button>
+<button data-action="back">⌫</button>
+<button data-action="percent">%</button>
+<button class="operator" data-operator="/">÷</button>
 
 <button data-number="7">7</button>
-
 <button data-number="8">8</button>
-
 <button data-number="9">9</button>
-
-<button
-class="operator"
-data-operator="*">
-×
-</button>
-
+<button class="operator" data-operator="*">×</button>
 
 <button data-number="4">4</button>
-
 <button data-number="5">5</button>
-
 <button data-number="6">6</button>
-
-<button
-class="operator"
-data-operator="-">
-−
-</button>
-
+<button class="operator" data-operator="-">−</button>
 
 <button data-number="1">1</button>
-
 <button data-number="2">2</button>
-
 <button data-number="3">3</button>
+<button class="operator" data-operator="+">+</button>
 
-<button
-class="operator"
-data-operator="+">
-+
-</button>
-
-
-<button data-action="sign">
-+/−
-</button>
-
-<button data-number="0">
-0
-</button>
-
-<button data-action="decimal">
-,
-</button>
-
-<button
-class="equal"
-data-action="equals">
-=
-</button>
-
+<button data-action="sign">+/−</button>
+<button data-number="0">0</button>
+<button data-action="decimal">,</button>
+<button class="equal" data-action="equals">=</button>
 </div>
 
 </div>
 
 </section>
 
-
 <button id="installButton" class="install">
-
 📲 &nbsp; INSTALAR CALCULADORA DIALLI
-
 </button>
 
-
-
-
 </div>
 </div>
-
 
 <script>
 
@@ -1022,324 +690,113 @@ data-action="equals">
 ================================================= */
 
 function numBR(v){
-
-if(v===null || v===undefined)
-return 0;
-
-let s=String(v).trim();
-
-if(!s)
-return 0;
-
-s=s
-.replace(/\./g,"")
-.replace(",", ".");
-
-const n=Number(s);
-
-return Number.isFinite(n)
-?n
-:0;
-
+  if(v===null || v===undefined) return 0;
+  let s=String(v).trim();
+  if(!s) return 0;
+  s=s.replace(/\./g,"").replace(",", ".");
+  const n=Number(s);
+  return Number.isFinite(n) ? n : 0;
 }
-
 
 function money(n){
-
-if(!Number.isFinite(n))
-n=0;
-
-return n.toLocaleString(
-"pt-BR",
-{
-style:"currency",
-currency:"BRL",
-minimumFractionDigits:2,
-maximumFractionDigits:2
+  if(!Number.isFinite(n)) n=0;
+  return n.toLocaleString("pt-BR", {
+    style:"currency",
+    currency:"BRL",
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  });
 }
-);
-
-}
-
 
 function pct(n){
-
-if(!Number.isFinite(n))
-n=0;
-
-return n.toLocaleString(
-"pt-BR",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
+  if(!Number.isFinite(n)) n=0;
+  return n.toLocaleString("pt-BR", {
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  }) + "%";
 }
-)+"%";
-
-}
-
 
 function factor(n){
-
-if(!Number.isFinite(n))
-n=0;
-
-return n.toLocaleString(
-"pt-BR",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
+  if(!Number.isFinite(n)) n=0;
+  return n.toLocaleString("pt-BR", {
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  }) + "x";
 }
-)+"x";
-
-}
-
 
 /* CÁLCULOS COMERCIAIS */
 
 function calcCommercial(){
 
-/* MARGEM */
+  /* MARGEM */
+  const custo = numBR(document.getElementById("margemCusto").value);
+  const margem = numBR(document.getElementById("margemPercent").value);
+  let venda = 0;
 
-const custo=
-numBR(
-document
-.getElementById("margemCusto")
-.value
-);
+  if(custo > 0 && margem >= 0 && margem < 100){
+    venda = custo / (1 - margem/100);
+  }
 
-const margem=
-numBR(
-document
-.getElementById("margemPercent")
-.value
-);
+  document.getElementById("margemVenda").textContent = money(venda);
+  document.getElementById("margemLucro").textContent = money(venda - custo);
+  document.getElementById("margemReal").textContent = pct(margem);
+  document.getElementById("margemMarkup").textContent = custo > 0 ? factor(venda/custo) : "0,00x";
 
-let venda=0;
+  /* PREÇO */
+  const pc = numBR(document.getElementById("precoCusto").value);
+  const pv = numBR(document.getElementById("precoVenda").value);
+  const pl = pv - pc;
+  const pm = pv !== 0 ? (pl/pv)*100 : 0;
 
-if(
-custo>0 &&
-margem>=0 &&
-margem<100
-){
+  document.getElementById("precoMargem").textContent = pct(pm);
+  document.getElementById("precoLucro").textContent = money(pl);
+  document.getElementById("precoResultado").textContent = money(pv);
+  document.getElementById("precoMarkup").textContent = pc > 0 ? factor(pv/pc) : "0,00x";
 
-venda=
-custo/
-(1-margem/100);
+  /* DESCONTO */
+  const dp = numBR(document.getElementById("descPreco").value);
+  const dperc = numBR(document.getElementById("descPercent").value);
+  const dv = dp * dperc / 100;
+  const df = dp - dv;
 
-}
+  document.getElementById("descFinal").textContent = money(df);
+  document.getElementById("descValor").textContent = money(dv);
+  document.getElementById("descPercReal").textContent = pct(dperc);
+  document.getElementById("descEconomia").textContent = money(dv);
 
-document
-.getElementById("margemVenda")
-.textContent=
-money(venda);
+  /* MARKUP */
+  const mc = numBR(document.getElementById("markupCusto").value);
+  const mp = numBR(document.getElementById("markupPercent").value);
+  const mv = mc * (1 + mp/100);
 
-document
-.getElementById("margemLucro")
-.textContent=
-money(venda-custo);
-
-document
-.getElementById("margemReal")
-.textContent=
-pct(margem);
-
-document
-.getElementById("margemMarkup")
-.textContent=
-custo>0
-?factor(venda/custo)
-:"0,00x";
-
-
-/* PREÇO */
-
-const pc=
-numBR(
-document
-.getElementById("precoCusto")
-.value
-);
-
-const pv=
-numBR(
-document
-.getElementById("precoVenda")
-.value
-);
-
-const pl=
-pv-pc;
-
-const pm=
-pv!==0
-?(pl/pv)*100
-:0;
-
-document
-.getElementById("precoMargem")
-.textContent=
-pct(pm);
-
-document
-.getElementById("precoLucro")
-.textContent=
-money(pl);
-
-document
-.getElementById("precoResultado")
-.textContent=
-money(pv);
-
-document
-.getElementById("precoMarkup")
-.textContent=
-pc>0
-?factor(pv/pc)
-:"0,00x";
-
-
-/* DESCONTO */
-
-const dp=
-numBR(
-document
-.getElementById("descPreco")
-.value
-);
-
-const dperc=
-numBR(
-document
-.getElementById("descPercent")
-.value
-);
-
-const dv=
-dp*dperc/100;
-
-const df=
-dp-dv;
-
-document
-.getElementById("descFinal")
-.textContent=
-money(df);
-
-document
-.getElementById("descValor")
-.textContent=
-money(dv);
-
-document
-.getElementById("descPercReal")
-.textContent=
-pct(dperc);
-
-document
-.getElementById("descEconomia")
-.textContent=
-money(dv);
-
-
-/* MARKUP */
-
-const mc=
-numBR(
-document
-.getElementById("markupCusto")
-.value
-);
-
-const mp=
-numBR(
-document
-.getElementById("markupPercent")
-.value
-);
-
-const mv=
-mc*(1+mp/100);
-
-document
-.getElementById("markupVenda")
-.textContent=
-money(mv);
-
-document
-.getElementById("markupLucro")
-.textContent=
-money(mv-mc);
-
-document
-.getElementById("markupReal")
-.textContent=
-pct(mp);
-
-document
-.getElementById("markupFator")
-.textContent=
-factor(1+mp/100);
+  document.getElementById("markupVenda").textContent = money(mv);
+  document.getElementById("markupLucro").textContent = money(mv - mc);
+  document.getElementById("markupReal").textContent = pct(mp);
+  document.getElementById("markupFator").textContent = factor(1 + mp/100);
 
 }
-
 
 /* ABAS COMERCIAIS */
 
-document
-.querySelectorAll(".commercialTab")
-.forEach(btn=>{
-
-btn.onclick=()=>{
-
-document
-.querySelectorAll(".commercialTab")
-.forEach(b=>
-b.classList.remove("active")
-);
-
-document
-.querySelectorAll(".commercial-mode")
-.forEach(s=>
-s.classList.remove("active")
-);
-
-btn.classList.add("active");
-
-document
-.getElementById(
-"mode-"+btn.dataset.mode
-)
-.classList.add("active");
-
-};
-
+document.querySelectorAll(".commercialTab").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".commercialTab").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".commercial-mode").forEach(s => s.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("mode-" + btn.dataset.mode).classList.add("active");
+  };
 });
 
-
-document
-.querySelectorAll(".commercial-mode input")
-.forEach(input=>{
-
-input.addEventListener(
-"input",
-calcCommercial
-);
-
+document.querySelectorAll(".commercial-mode input").forEach(input => {
+  input.addEventListener("input", calcCommercial);
 });
 
-
-document
-.getElementById("clearMargin")
-.onclick=()=>{
-
-document
-.querySelectorAll(".commercial-mode input")
-.forEach(i=>
-i.placeholder="0"
-);
-
-calcCommercial();
-
+/* BOTÃO LIMPAR TUDO (ÁREA COMERCIAL) */
+document.getElementById("clearMargin").onclick = () => {
+  document.querySelectorAll(".commercial-mode input").forEach(i => {
+    i.value = "0";
+  });
+  calcCommercial();
 };
 
 
@@ -1347,815 +804,329 @@ calcCommercial();
    CALCULADORA DIALLI PRO
 ================================================= */
 
-let calcplaceholder="0";
+let calcValue = "0";
+let calcplaceholder = "0";
+let calcStored = null;
+let calcOp = null;
+let calcWaiting = false;
+let calcExpression = "";
+let calcLastValue = null;
+let memory = 0;
 
-let calcStored=null;
-
-let calcOp=null;
-
-let calcWaiting=false;
-
-let calcExpression="";
-
-let calcLastValue=null;
-
-let memory=0;
-
-
-const display=
-document.getElementById("display");
-
-const expression=
-document.getElementById("expression");
-
+const display = document.getElementById("display");
+const expression = document.getElementById("expression");
 
 function formatCalc(value){
-
-if(value==="Erro")
-return "Erro";
-
-const number=
-Number(value);
-
-if(!Number.isFinite(number))
-return "Erro";
-
-return number.toLocaleString(
-"pt-BR",
-{
-maximumFractionDigits:10,
-useGrouping:true
+  if(value === "Erro") return "Erro";
+  const number = Number(value);
+  if(!Number.isFinite(number)) return "Erro";
+  return number.toLocaleString("pt-BR", {
+    maximumFractionDigits:10,
+    useGrouping:true
+  });
 }
-);
-
-}
-calcValue = '0';
-calcExpression = '';
 
 function updateCalc(){
-
-display.textContent=
-formatCalc(calcValue);
-
-expression.textContent=
-calcExpression;
-
+  display.textContent = formatCalc(calcValue);
+  expression.textContent = calcExpression;
 }
 
-
-/* DIGITOS */
+/* DÍGITOS */
 
 function calcDigit(digit){
+  if(calcValue === "Erro") calcClear();
 
-if(calcValue==="Erro")
-calcClear();
-
-if(calcWaiting){
-
-calcValue=digit;
-
-calcWaiting=false;
-
+  if(calcWaiting){
+    calcValue = digit;
+    calcWaiting = false;
+  } else {
+    if(calcValue === "0"){
+      calcValue = digit;
+    } else {
+      const digits = calcValue.replace(/[^\d]/g,"");
+      if(digits.length >= 15) return;
+      calcValue += digit;
+    }
+  }
+  updateCalc();
 }
-
-else{
-
-if(calcValue==="0"){
-
-calcValue=digit;
-
-}
-
-else{
-
-const digits=
-calcValue
-.replace(/[^\d]/g,"");
-
-if(digits.length>=15)
-return;
-
-calcValue+=digit;
-
-}
-
-}
-
-updateCalc();
-
-}
-
 
 /* DECIMAL */
 
 function calcDecimal(){
+  if(calcValue === "Erro") calcClear();
 
-if(calcValue==="Erro")
-calcClear();
-
-if(calcWaiting){
-
-calcValue="0.";
-
-calcWaiting=false;
-
+  if(calcWaiting){
+    calcValue = "0.";
+    calcWaiting = false;
+  } else if(!calcValue.includes(".")){
+    calcValue += ".";
+  }
+  updateCalc();
 }
-
-else if(
-!calcValue.includes(".")
-){
-
-calcValue+=".";
-
-}
-
-updateCalc();
-
-}
-
 
 /* OPERADOR */
 
 function operatorSymbol(op){
-
-if(op==="+")
-return "+";
-
-if(op==="-")
-return "−";
-
-if(op==="*")
-return "×";
-
-if(op==="/")
-return "÷";
-
-return "";
-
+  if(op==="+") return "+";
+  if(op==="-") return "−";
+  if(op==="*") return "×";
+  if(op==="/") return "÷";
+  return "";
 }
-
 
 function doOperation(a,b,op){
-
-if(op==="+")
-return a+b;
-
-if(op==="-")
-return a-b;
-
-if(op==="*")
-return a*b;
-
-if(op==="/"){
-
-if(b===0)
-return NaN;
-
-return a/b;
-
+  if(op==="+") return a+b;
+  if(op==="-") return a-b;
+  if(op==="*") return a*b;
+  if(op==="/"){
+    if(b===0) return NaN;
+    return a/b;
+  }
+  return b;
 }
-
-return b;
-
-}
-
 
 function calcOperator(op){
+  if(calcValue === "Erro") return;
+  const current = Number(calcValue);
+  if(!Number.isFinite(current)) return;
 
-if(calcValue==="Erro")
-return;
+  if(calcStored === null){
+    calcStored = current;
+  } else if(calcOp !== null && !calcWaiting){
+    const result = doOperation(calcStored, current, calcOp);
+    if(!Number.isFinite(result)){
+      calcValue = "Erro";
+      calcStored = null;
+      calcOp = null;
+      calcExpression = "";
+      calcWaiting = true;
+      updateCalc();
+      return;
+    }
+    calcStored = result;
+    calcValue = String(result);
+  }
 
-const current=
-Number(calcValue);
-
-if(!Number.isFinite(current))
-return;
-
-
-if(calcStored===null){
-
-calcStored=current;
-
+  calcOp = op;
+  calcWaiting = true;
+  calcLastValue = null;
+  calcExpression = formatCalc(calcStored) + " " + operatorSymbol(op);
+  updateCalc();
 }
-
-else if(
-calcOp!==null &&
-!calcWaiting
-){
-
-const result=
-doOperation(
-calcStored,
-current,
-calcOp
-);
-
-if(!Number.isFinite(result)){
-
-calcValue="Erro";
-
-calcStored=null;
-
-calcOp=null;
-
-calcExpression="";
-
-calcWaiting=true;
-
-updateCalc();
-
-return;
-
-}
-
-calcStored=result;
-
-calcValue=
-String(result);
-
-}
-
-
-calcOp=op;
-
-calcWaiting=true;
-
-calcLastValue=null;
-
-calcExpression=
-formatCalc(calcStored)
-+" "
-+operatorSymbol(op);
-
-updateCalc();
-
-}
-
 
 /* IGUAL */
 
 function calcEqual(){
+  if(calcStored === null || calcOp === null) return;
+  let current = Number(calcValue);
 
-if(
-calcStored===null ||
-calcOp===null
-)
-return;
+  if(calcLastValue !== null){
+    current = calcLastValue;
+  }
 
-let current=
-Number(calcValue);
+  const result = doOperation(calcStored, current, calcOp);
 
-if(calcLastValue!==null){
+  if(!Number.isFinite(result)){
+    calcValue = "Erro";
+    calcStored = null;
+    calcOp = null;
+    calcExpression = "";
+    calcWaiting = true;
+    updateCalc();
+    return;
+  }
 
-current=
-calcLastValue;
-
+  calcExpression = formatCalc(calcStored) + " " + operatorSymbol(calcOp) + " " + formatCalc(current) + " =";
+  calcValue = String(result);
+  calcStored = null;
+  calcOp = null;
+  calcWaiting = true;
+  calcLastValue = current;
+  updateCalc();
 }
-
-
-const result=
-doOperation(
-calcStored,
-current,
-calcOp
-);
-
-
-if(!Number.isFinite(result)){
-
-calcValue="Erro";
-
-calcStored=null;
-
-calcOp=null;
-
-calcExpression="";
-
-calcWaiting=true;
-
-updateCalc();
-
-return;
-
-}
-
-
-calcExpression=
-formatCalc(calcStored)
-+" "
-+operatorSymbol(calcOp)
-+" "
-+formatCalc(current)
-+" =";
-
-
-calcValue=
-String(result);
-
-calcStored=null;
-
-calcOp=null;
-
-calcWaiting=true;
-
-calcLastValue=
-current;
-
-updateCalc();
-
-}
-
 
 /* PORCENTAGEM */
 
 function calcPercent(){
+  let value = Number(calcValue);
+  if(!Number.isFinite(value)) return;
 
-let value=
-Number(calcValue);
+  if(calcStored !== null && calcOp !== null){
+    if(calcOp === "+" || calcOp === "-"){
+      value = calcStored * value / 100;
+    } else {
+      value = value / 100;
+    }
+  } else {
+    value = value / 100;
+  }
 
-if(!Number.isFinite(value))
-return;
-
-
-if(
-calcStored!==null &&
-calcOp!==null
-){
-
-if(
-calcOp==="+" ||
-calcOp==="-"
-){
-
-value=
-calcStored*
-value/100;
-
+  calcValue = String(value);
+  calcLastValue = value;
+  calcWaiting = false;
+  updateCalc();
 }
-
-else{
-
-value=
-value/100;
-
-}
-
-}
-
-else{
-
-value=
-value/100;
-
-}
-
-
-calcValue=
-String(value);
-
-calcLastValue=
-value;
-
-calcWaiting=false;
-
-updateCalc();
-
-}
-
 
 /* BACKSPACE */
 
 function calcBack(){
+  if(calcValue === "Erro"){
+    calcClear();
+    return;
+  }
 
-if(calcValue==="Erro"){
-
-calcClear();
-
-return;
-
+  if(calcValue.length <= 1 || (calcValue.length === 2 && calcValue.startsWith("-"))){
+    calcValue = "0";
+  } else {
+    calcValue = calcValue.slice(0, -1);
+  }
+  updateCalc();
 }
 
-
-if(
-calcValue.length<=1 ||
-(
-calcValue.length===2 &&
-calcValue.startsWith("-")
-)
-){
-
-calcplaceholder="0";
-
-}
-
-else{
-
-calcValue=
-calcValue.slice(0,-1);
-
-}
-
-updateCalc();
-
-}
-
-
-/* AC */
+/* AC (LIMPAR CALCULADORA SECUNDÁRIA) */
 
 function calcClear(){
-
-calcplaceholder="0";
-
-calcStored=null;
-
-calcOp=null;
-
-calcWaiting=false;
-
-calcExpression="";
-
-calcLastValue=null;
-
-updateCalc();
-
+  calcValue = "0";
+  calcplaceholder = "0";
+  calcStored = null;
+  calcOp = null;
+  calcWaiting = false;
+  calcExpression = "";
+  calcLastValue = null;
+  updateCalc();
 }
-
 
 /* SINAL */
 
 function calcSign(){
-
-if(calcValue==="0")
-return;
-
-if(
-calcValue.startsWith("-")
-){
-
-calcValue=
-calcValue.slice(1);
-
+  if(calcValue === "0") return;
+  if(calcValue.startsWith("-")){
+    calcValue = calcValue.slice(1);
+  } else {
+    calcValue = "-" + calcValue;
+  }
+  updateCalc();
 }
 
-else{
+/* BOTÕES CALCULADORA */
 
-calcValue=
-"-"+calcValue;
-
-}
-
-updateCalc();
-
-}
-
-
-/* BOTÕES */
-
-document
-.querySelectorAll("[data-number]")
-.forEach(button=>{
-
-button.onclick=()=>{
-
-calcDigit(
-button.dataset.number
-);
-
-};
-
+document.querySelectorAll("[data-number]").forEach(button => {
+  button.onclick = () => { calcDigit(button.dataset.number); };
 });
 
-
-document
-.querySelectorAll("[data-operator]")
-.forEach(button=>{
-
-button.onclick=()=>{
-
-calcOperator(
-button.dataset.operator
-);
-
-};
-
+document.querySelectorAll("[data-operator]").forEach(button => {
+  button.onclick = () => { calcOperator(button.dataset.operator); };
 });
 
-
-document
-.querySelectorAll("[data-action]")
-.forEach(button=>{
-
-button.onclick=()=>{
-
-const action=
-button.dataset.action;
-
-if(action==="clear")
-calcClear();
-
-if(action==="back")
-calcBack();
-
-if(action==="decimal")
-calcDecimal();
-
-if(action==="equals")
-calcEqual();
-
-if(action==="percent")
-calcPercent();
-
-if(action==="sign")
-calcSign();
-
-};
-
+document.querySelectorAll("[data-action]").forEach(button => {
+  button.onclick = () => {
+    const action = button.dataset.action;
+    if(action === "clear") calcClear();
+    if(action === "back") calcBack();
+    if(action === "decimal") calcDecimal();
+    if(action === "equals") calcEqual();
+    if(action === "percent") calcPercent();
+    if(action === "sign") calcSign();
+  };
 });
-
 
 /* MEMÓRIA */
 
-document
-.querySelectorAll("[data-memory]")
-.forEach(button=>{
+document.querySelectorAll("[data-memory]").forEach(button => {
+  button.onclick = () => {
+    const action = button.dataset.memory;
+    const value = Number(calcValue);
 
-button.onclick=()=>{
+    if(action === "MC") memory = 0;
+    if(action === "MR"){ calcValue = String(memory); calcWaiting = false; }
+    if(action === "MS" && Number.isFinite(value)){ memory = value; }
+    if(action === "M+" && Number.isFinite(value)){ memory += value; }
+    if(action === "M-" && Number.isFinite(value)){ memory -= value; }
 
-const action=
-button.dataset.memory;
-
-const value=
-Number(calcValue);
-
-
-if(action==="MC")
-memory=0;
-
-
-if(action==="MR"){
-
-calcValue=
-String(memory);
-
-calcWaiting=false;
-
-}
-
-
-if(
-action==="MS" &&
-Number.isFinite(value)
-){
-
-memory=value;
-
-}
-
-
-if(
-action==="M+" &&
-Number.isFinite(value)
-){
-
-memory+=value;
-
-}
-
-
-if(
-action==="M-" &&
-Number.isFinite(value)
-){
-
-memory-=value;
-
-}
-
-
-updateCalc();
-
-};
-
+    updateCalc();
+  };
 });
 
+/* TECLADO FÍSICO (ISOLADO DOS INPUTS COMERCIAIS) */
 
-/* TECLADO FÍSICO */
+document.addEventListener("keydown", event => {
+  // Ignora o teclado da calculadora se o usuário estiver digitando em um campo de texto
+  if (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA") {
+    return;
+  }
 
-document.addEventListener(
-"keydown",
-event=>{
-
-if(
-event.key>="0" &&
-event.key<="9"
-){
-
-calcDigit(event.key);
-
-return;
-
-}
-
-
-if(
-["+","-","*","/"]
-.includes(event.key)
-){
-
-calcOperator(event.key);
-
-return;
-
-}
-
-
-if(
-event.key==="." ||
-event.key===","
-){
-
-calcDecimal();
-
-return;
-
-}
-
-
-if(
-event.key==="Enter" ||
-event.key==="="
-){
-
-event.preventDefault();
-
-calcEqual();
-
-return;
-
-}
-
-
-if(
-event.key==="Backspace"
-){
-
-calcBack();
-
-return;
-
-}
-
-
-if(
-event.key==="Escape" ||
-event.key==="Delete"
-){
-
-calcClear();
-
-return;
-
-}
-
-
-if(event.key==="%"){
-
-calcPercent();
-
-}
-
+  if(event.key >= "0" && event.key <= "9"){ calcDigit(event.key); return; }
+  if(["+","-","*","/"].includes(event.key)){ calcOperator(event.key); return; }
+  if(event.key === "." || event.key === ","){ calcDecimal(); return; }
+  if(event.key === "Enter" || event.key === "="){ event.preventDefault(); calcEqual(); return; }
+  if(event.key === "Backspace"){ calcBack(); return; }
+  if(event.key === "Escape" || event.key === "Delete"){ calcClear(); return; }
+  if(event.key === "%"){ calcPercent(); }
 });
-
 
 /* =================================================
    ABAS PRINCIPAIS
 ================================================= */
 
-const marginTab=
-document.getElementById("marginTab");
+const marginTab = document.getElementById("marginTab");
+const calcTab = document.getElementById("calcTab");
+const marginScreen = document.getElementById("marginScreen");
+const calcScreen = document.getElementById("calcScreen");
 
-const calcTab=
-document.getElementById("calcTab");
-
-const marginScreen=
-document.getElementById("marginScreen");
-
-const calcScreen=
-document.getElementById("calcScreen");
-
-
-marginTab.onclick=()=>{
-
-marginTab.classList.add("active");
-
-calcTab.classList.remove("active");
-
-marginScreen.classList.add("active");
-
-calcScreen.classList.remove("active");
-
+marginTab.onclick = () => {
+  marginTab.classList.add("active");
+  calcTab.classList.remove("active");
+  marginScreen.classList.add("active");
+  calcScreen.classList.remove("active");
 };
 
-
-calcTab.onclick=()=>{
-
-calcTab.classList.add("active");
-
-marginTab.classList.remove("active");
-
-calcScreen.classList.add("active");
-
-marginScreen.classList.remove("active");
-
+calcTab.onclick = () => {
+  calcTab.classList.add("active");
+  marginTab.classList.remove("active");
+  calcScreen.classList.add("active");
+  marginScreen.classList.remove("active");
 };
-
 
 /* =================================================
    INSTALAÇÃO
 ================================================= */
 
-let deferredPrompt=null;
+let deferredPrompt = null;
 
-
-window.addEventListener(
-"beforeinstallprompt",
-event=>{
-
-event.preventDefault();
-
-deferredPrompt=event;
-
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredPrompt = event;
 });
 
+document.getElementById("installButton").onclick = async () => {
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    return;
+  }
 
-document
-.getElementById("installButton")
-.onclick=async()=>{
-
-if(deferredPrompt){
-
-deferredPrompt.prompt();
-
-await deferredPrompt.userChoice;
-
-deferredPrompt=null;
-
-return;
-
-}
-
-
-if(
-/iPhone|iPad|iPod/i
-.test(navigator.userAgent)
-){
-
-alert(
-"Para instalar no iPhone:\n\n"+
-"1. Toque em Compartilhar.\n"+
-"2. Toque em Adicionar à Tela de Início.\n"+
-"3. Toque em Adicionar."
-);
-
-}
-
-else{
-
-alert(
-"No Android, abra pelo Google Chrome e toque em "+
-"Instalar aplicativo ou Adicionar à tela inicial."
-);
-
-}
-
+  if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+    alert("Para instalar no iPhone:\n\n1. Toque em Compartilhar.\n2. Toque em Adicionar à Tela de Início.\n3. Toque em Adicionar.");
+  } else {
+    alert("No Android, abra pelo Google Chrome e toque em Instalar aplicativo ou Adicionar à tela inicial.");
+  }
 };
-
 
 /* =================================================
    OFFLINE
 ================================================= */
 
 if("serviceWorker" in navigator){
-
-window.addEventListener(
-"load",
-()=>{
-
-navigator.serviceWorker
-.register("./sw.js")
-.catch(
-error=>console.log(error)
-);
-
-});
-
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(error => console.log(error));
+  });
 }
-
 
 /* INICIALIZAÇÃO */
 
 calcCommercial();
-
 calcClear();
 
 </script>
