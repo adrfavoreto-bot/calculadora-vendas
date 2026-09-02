@@ -266,7 +266,15 @@ border:0;
 background:transparent;
 color:#075b2c;
 font-size:12px;
-font-weight:bold
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+transition:background 0.1s, transform 0.1s
+}
+
+.memory button:active{
+background:rgba(21,145,75,.25);
+transform:scale(.90)
 }
 
 .display{
@@ -552,7 +560,7 @@ font-size:32px
 <div class="result">
 <h3>PERCENTUAL</h3>
 <div id="descPercReal" class="value">0,00%</div>
-<p>Desconto applied</p>
+<p>Desconto aplicado</p>
 </div>
 
 <div class="result">
@@ -585,7 +593,7 @@ font-size:32px
 <div class="result">
 <h3>PREÇO DE VENDA</h3>
 <div id="markupVenda" class="value">R$ 0,00</div>
-<p>Preço calculado</p>
+<p>Preço calculated</p>
 </div>
 
 <div class="result">
@@ -1038,11 +1046,29 @@ document.querySelectorAll("[data-memory]").forEach(button => {
     const action = button.dataset.memory;
     const value = Number(calcValue);
 
-    if(action === "MC") memory = 0;
-    if(action === "MR"){ calcValue = String(memory); calcWaiting = false; }
-    if(action === "MS" && Number.isFinite(value)){ memory = value; }
-    if(action === "M+" && Number.isFinite(value)){ memory += value; }
-    if(action === "M-" && Number.isFinite(value)){ memory -= value; }
+    if(action === "MC"){
+      memory = 0;
+    }
+
+    if(action === "MR"){
+      calcValue = String(memory);
+      calcWaiting = true;
+    }
+
+    if(action === "MS" && Number.isFinite(value)){
+      memory = value;
+      calcWaiting = true;
+    }
+
+    if(action === "M+" && Number.isFinite(value)){
+      memory += value;
+      calcWaiting = true;
+    }
+
+    if(action === "M-" && Number.isFinite(value)){
+      memory -= value;
+      calcWaiting = true;
+    }
 
     updateCalc();
   };
@@ -1051,7 +1077,6 @@ document.querySelectorAll("[data-memory]").forEach(button => {
 /* TECLADO FÍSICO (ISOLADO DOS INPUTS COMERCIAIS) */
 
 document.addEventListener("keydown", event => {
-  // Ignora o teclado da calculadora se o usuário estiver digitando em um campo de texto
   if (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA") {
     return;
   }
