@@ -63,44 +63,13 @@ border-radius:12px;
 padding:8px 15px;
 font-size:12px;
 font-weight:bold;
-white-space:nowrap
+white-space:nowrap;
+cursor:pointer;
 }
 
 .tabs button.active{
 background:#ffd000;
 color:#06351f
-}
-
-.logo{
-width:min(95%,620px);
-margin:auto;
-text-align:center
-}
-
-.logo img{
-width:100%;
-height:auto;
-display:block
-}
-
-.title{
-text-align:center;
-margin:0 0 12px
-}
-
-.title h1{
-margin:0;
-font-size:30px;
-font-weight:900
-}
-
-.title h1 span{
-color:#ffd000
-}
-
-.title p{
-margin:4px 0 0;
-font-size:14px
 }
 
 .screen{
@@ -134,7 +103,8 @@ color:#075b2c;
 border-radius:10px;
 padding:9px 3px;
 font-size:11px;
-font-weight:bold
+font-weight:bold;
+cursor:pointer;
 }
 
 .commercial-tabs button.active{
@@ -326,7 +296,8 @@ border-radius:50%;
 background:transparent;
 color:#075b2c;
 font-size:26px;
-font-weight:500
+font-weight:500;
+cursor:pointer;
 }
 
 .keys button:active{
@@ -358,18 +329,6 @@ font-weight:bold
 @media(max-width:600px){
 .app{
 padding:6px 8px 20px
-}
-
-.logo{
-width:100%
-}
-
-.title h1{
-font-size:27px
-}
-
-.title p{
-font-size:13px
 }
 
 .commercial-tabs button{
@@ -701,48 +660,64 @@ function factor(n){
 function calcCommercial(){
 
   /* MARGEM */
-  const custo = numBR(document.getElementById("margemCusto").value);
-  const margem = numBR(document.getElementById("margemPercent").value);
-  let venda = 0;
+  const elMargemCusto = document.getElementById("margemCusto");
+  const elMargemPercent = document.getElementById("margemPercent");
+  if(elMargemCusto && elMargemPercent){
+    const custo = numBR(elMargemCusto.value);
+    const margem = numBR(elMargemPercent.value);
+    let venda = 0;
 
-  if(custo > 0 && margem >= 0 && margem < 100){
-    venda = custo / (1 - margem/100);
+    if(custo > 0 && margem >= 0 && margem < 100){
+      venda = custo / (1 - margem/100);
+    }
+
+    if(document.getElementById("margemVenda")) document.getElementById("margemVenda").textContent = money(venda);
+    if(document.getElementById("margemLucro")) document.getElementById("margemLucro").textContent = money(venda - custo);
+    if(document.getElementById("margemReal")) document.getElementById("margemReal").textContent = pct(margem);
   }
 
-  document.getElementById("margemVenda").textContent = money(venda);
-  document.getElementById("margemLucro").textContent = money(venda - custo);
-  document.getElementById("margemReal").textContent = pct(margem);
-
   /* PREÇO */
-  const pc = numBR(document.getElementById("precoCusto").value);
-  const pv = numBR(document.getElementById("precoVenda").value);
-  const pl = pv - pc;
-  const pm = pv !== 0 ? (pl/pv)*100 : 0;
+  const elPrecoCusto = document.getElementById("precoCusto");
+  const elPrecoVenda = document.getElementById("precoVenda");
+  if(elPrecoCusto && elPrecoVenda){
+    const pc = numBR(elPrecoCusto.value);
+    const pv = numBR(elPrecoVenda.value);
+    const pl = pv - pc;
+    const pm = pv !== 0 ? (pl/pv)*100 : 0;
 
-  document.getElementById("precoMargem").textContent = pct(pm);
-  document.getElementById("precoLucro").textContent = money(pl);
-  document.getElementById("precoResultado").textContent = money(pv);
-  document.getElementById("precoMarkup").textContent = pc > 0 ? factor(pv/pc) : "0,00x";
+    if(document.getElementById("precoMargem")) document.getElementById("precoMargem").textContent = pct(pm);
+    if(document.getElementById("precoLucro")) document.getElementById("precoLucro").textContent = money(pl);
+    if(document.getElementById("precoResultado")) document.getElementById("precoResultado").textContent = money(pv);
+    if(document.getElementById("precoMarkup")) document.getElementById("precoMarkup").textContent = pc > 0 ? factor(pv/pc) : "0,00x";
+  }
 
   /* DESCONTO */
-  const dp = numBR(document.getElementById("descPreco").value);
-  const dperc = numBR(document.getElementById("descPercent").value);
-  const dv = dp * dperc / 100;
-  const df = dp - dv;
+  const elDescPreco = document.getElementById("descPreco");
+  const elDescPercent = document.getElementById("descPercent");
+  if(elDescPreco && elDescPercent){
+    const dp = numBR(elDescPreco.value);
+    const dperc = numBR(elDescPercent.value);
+    const dv = dp * dperc / 100;
+    const df = dp - dv;
 
-  document.getElementById("descFinal").textContent = money(df);
-  document.getElementById("descValor").textContent = money(dv);
-  document.getElementById("descPercReal").textContent = pct(dperc);
-  document.getElementById("descEconomia").textContent = money(dv);
+    if(document.getElementById("descFinal")) document.getElementById("descFinal").textContent = money(df);
+    if(document.getElementById("descValor")) document.getElementById("descValor").textContent = money(dv);
+    if(document.getElementById("descPercReal")) document.getElementById("descPercReal").textContent = pct(dperc);
+    if(document.getElementById("descEconomia")) document.getElementById("descEconomia").textContent = money(dv);
+  }
 
   /* MARKUP */
-  const mc = numBR(document.getElementById("markupCusto").value);
-  const mp = numBR(document.getElementById("markupPercent").value);
-  const mv = mc * (1 + mp/100);
+  const elMarkupCusto = document.getElementById("markupCusto");
+  const elMarkupPercent = document.getElementById("markupPercent");
+  if(elMarkupCusto && elMarkupPercent){
+    const mc = numBR(elMarkupCusto.value);
+    const mp = numBR(elMarkupPercent.value);
+    const mv = mc * (1 + mp/100);
 
-  document.getElementById("markupVenda").textContent = money(mv);
-  document.getElementById("markupLucro").textContent = money(mv - mc);
-  document.getElementById("markupReal").textContent = pct(mp);
+    if(document.getElementById("markupVenda")) document.getElementById("markupVenda").textContent = money(mv);
+    if(document.getElementById("markupLucro")) document.getElementById("markupLucro").textContent = money(mv - mc);
+    if(document.getElementById("markupReal")) document.getElementById("markupReal").textContent = pct(mp);
+  }
 
 }
 
@@ -753,7 +728,9 @@ document.querySelectorAll(".commercialTab").forEach(btn => {
     document.querySelectorAll(".commercialTab").forEach(b => b.classList.remove("active"));
     document.querySelectorAll(".commercial-mode").forEach(s => s.classList.remove("active"));
     btn.classList.add("active");
-    document.getElementById("mode-" + btn.dataset.mode).classList.add("active");
+    const mode = btn.dataset.mode;
+    const target = document.getElementById("mode-" + mode);
+    if(target) target.classList.add("active");
   };
 });
 
@@ -762,12 +739,15 @@ document.querySelectorAll(".commercial-mode input").forEach(input => {
 });
 
 /* BOTÃO LIMPAR TUDO (ÁREA COMERCIAL) */
-document.getElementById("clearMargin").onclick = () => {
-  document.querySelectorAll(".commercial-mode input").forEach(i => {
-    i.value = "";
-  });
-  calcCommercial();
-};
+const clearMarginBtn = document.getElementById("clearMargin");
+if(clearMarginBtn){
+  clearMarginBtn.onclick = () => {
+    document.querySelectorAll(".commercial-mode input").forEach(i => {
+      i.value = "";
+    });
+    calcCommercial();
+  };
+}
 
 
 /* =================================================
@@ -788,17 +768,25 @@ const expression = document.getElementById("expression");
 
 function formatCalc(value){
   if(value === "Erro") return "Erro";
-  const number = Number(value);
-  if(!Number.isFinite(number)) return "Erro";
-  return number.toLocaleString("pt-BR", {
-    maximumFractionDigits:10,
-    useGrouping:true
-  });
+  if(value === "" || value === null || value === undefined) return "0";
+
+  let strVal = String(value);
+  const isNegative = strVal.startsWith("-");
+  const cleanValue = isNegative ? strVal.slice(1) : strVal;
+  const parts = cleanValue.split(".");
+
+  const integerStr = parts[0] ? Number(parts[0]).toLocaleString("pt-BR") : "0";
+  const prefix = isNegative ? "-" : "";
+
+  if (parts.length > 1) {
+    return prefix + integerStr + "," + parts[1];
+  }
+  return prefix + integerStr;
 }
 
 function updateCalc(){
-  display.textContent = formatCalc(calcValue);
-  expression.textContent = calcExpression;
+  if(display) display.textContent = formatCalc(calcValue);
+  if(expression) expression.textContent = calcExpression;
 }
 
 /* DÍGITOS */
@@ -908,196 +896,3 @@ function calcEqual(){
   }
 
   calcExpression = formatCalc(calcStored) + " " + operatorSymbol(calcOp) + " " + formatCalc(current) + " =";
-  calcValue = String(result);
-  calcStored = null;
-  calcOp = null;
-  calcWaiting = true;
-  calcLastValue = current;
-  updateCalc();
-}
-
-/* PORCENTAGEM */
-
-function calcPercent(){
-  let value = Number(calcValue);
-  if(!Number.isFinite(value)) return;
-
-  if(calcStored !== null && calcOp !== null){
-    if(calcOp === "+" || calcOp === "-"){
-      value = calcStored * value / 100;
-    } else {
-      value = value / 100;
-    }
-  } else {
-    value = value / 100;
-  }
-
-  calcValue = String(value);
-  calcLastValue = value;
-  calcWaiting = false;
-  updateCalc();
-}
-
-/* BACKSPACE */
-
-function calcBack(){
-  if(calcValue === "Erro"){
-    calcClear();
-    return;
-  }
-
-  if(calcValue.length <= 1 || (calcValue.length === 2 && calcValue.startsWith("-"))){
-    calcValue = "0";
-  } else {
-    calcValue = calcValue.slice(0, -1);
-  }
-  updateCalc();
-}
-
-/* AC (LIMPAR CALCULADORA SECUNDÁRIA) */
-
-function calcClear(){
-  calcValue = "0";
-  calcplaceholder = "0";
-  calcStored = null;
-  calcOp = null;
-  calcWaiting = false;
-  calcExpression = "";
-  calcLastValue = null;
-  updateCalc();
-}
-
-/* SINAL */
-
-function calcSign(){
-  if(calcValue === "0") return;
-  if(calcValue.startsWith("-")){
-    calcValue = calcValue.slice(1);
-  } else {
-    calcValue = "-" + calcValue;
-  }
-  updateCalc();
-}
-
-/* BOTÕES CALCULADORA */
-
-document.querySelectorAll("[data-number]").forEach(button => {
-  button.onclick = () => { calcDigit(button.dataset.number); };
-});
-
-document.querySelectorAll("[data-operator]").forEach(button => {
-  button.onclick = () => { calcOperator(button.dataset.operator); };
-});
-
-document.querySelectorAll("[data-action]").forEach(button => {
-  button.onclick = () => {
-    const action = button.dataset.action;
-    if(action === "clear") calcClear();
-    if(action === "back") calcBack();
-    if(action === "decimal") calcDecimal();
-    if(action === "equals") calcEqual();
-    if(action === "percent") calcPercent();
-    if(action === "sign") calcSign();
-  };
-});
-
-/* MEMÓRIA */
-
-document.querySelectorAll("[data-memory]").forEach(button => {
-  button.onclick = () => {
-    const action = button.dataset.memory;
-    const value = Number(calcValue);
-
-    /* MC: Zera a memória interna E limpa o visor para 0 */
-    if(action === "MC"){
-      memory = 0;
-      calcValue = "0";
-      calcWaiting = true;
-    }
-
-    /* MR: Exibe no visor o valor salvo na memória */
-    if(action === "MR"){
-      calcValue = String(memory);
-      calcWaiting = true;
-    }
-
-    /* MS: Salva o valor da tela na memória */
-    if(action === "MS" && Number.isFinite(value)){
-      memory = value;
-      calcWaiting = true;
-    }
-
-    /* M+: Adiciona o valor da tela à memória */
-    if(action === "M+" && Number.isFinite(value)){
-      memory += value;
-      calcWaiting = true;
-    }
-
-    /* M-: Subtrai o valor da tela da memória */
-    if(action === "M-" && Number.isFinite(value)){
-      memory -= value;
-      calcWaiting = true;
-    }
-
-    updateCalc();
-  };
-});
-
-/* TECLADO FÍSICO */
-
-document.addEventListener("keydown", event => {
-  if (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA") {
-    return;
-  }
-
-  if(event.key >= "0" && event.key <= "9"){ calcDigit(event.key); return; }
-  if(["+","-","*","/"].includes(event.key)){ calcOperator(event.key); return; }
-  if(event.key === "." || event.key === ","){ calcDecimal(); return; }
-  if(event.key === "Enter" || event.key === "="){ event.preventDefault(); calcEqual(); return; }
-  if(event.key === "Backspace"){ calcBack(); return; }
-  if(event.key === "Escape" || event.key === "Delete"){ calcClear(); return; }
-  if(event.key === "%"){ calcPercent(); }
-});
-
-/* =================================================
-   ABAS PRINCIPAIS
-================================================= */
-
-const marginTab = document.getElementById("marginTab");
-const calcTab = document.getElementById("calcTab");
-const marginScreen = document.getElementById("marginScreen");
-const calcScreen = document.getElementById("calcScreen");
-
-marginTab.onclick = () => {
-  marginTab.classList.add("active");
-  calcTab.classList.remove("active");
-  marginScreen.classList.add("active");
-  calcScreen.classList.remove("active");
-};
-
-calcTab.onclick = () => {
-  calcTab.classList.add("active");
-  marginTab.classList.remove("active");
-  calcScreen.classList.add("active");
-  marginScreen.classList.remove("active");
-};
-
-/* =================================================
-   OFFLINE
-================================================= */
-
-if("serviceWorker" in navigator){
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(error => console.log(error));
-  });
-}
-
-/* INICIALIZAÇÃO */
-
-calcCommercial();
-calcClear();
-
-</script>
-
-</body>
-</html>
