@@ -203,6 +203,10 @@ text-align:center;
 border:1px solid #d8e6dc
 }
 
+.result.full-width{
+grid-column: span 2;
+}
+
 .result h3{
 margin:0;
 color:#138a46;
@@ -443,16 +447,10 @@ font-size:32px
 <p>Venda − custo</p>
 </div>
 
-<div class="result">
+<div class="result full-width">
 <h3>MARGEM</h3>
 <div id="margemReal" class="value">0,00%</div>
 <p>Margem obtida</p>
-</div>
-
-<div class="result">
-<h3>MARKUP</h3>
-<div id="margemMarkup" class="value">0,00x</div>
-<p>Venda ÷ custo</p>
 </div>
 </div>
 </div>
@@ -578,16 +576,10 @@ font-size:32px
 <p>Venda − custo</p>
 </div>
 
-<div class="result">
+<div class="result full-width">
 <h3>MARKUP</h3>
 <div id="markupReal" class="value">0,00%</div>
 <p>Percentual aplicado</p>
-</div>
-
-<div class="result">
-<h3>FATOR</h3>
-<div id="markupFator" class="value">1,00x</div>
-<p>Fator de multiplicação</p>
 </div>
 </div>
 </div>
@@ -720,7 +712,6 @@ function calcCommercial(){
   document.getElementById("margemVenda").textContent = money(venda);
   document.getElementById("margemLucro").textContent = money(venda - custo);
   document.getElementById("margemReal").textContent = pct(margem);
-  document.getElementById("margemMarkup").textContent = custo > 0 ? factor(venda/custo) : "0,00x";
 
   /* PREÇO */
   const pc = numBR(document.getElementById("precoCusto").value);
@@ -752,7 +743,6 @@ function calcCommercial(){
   document.getElementById("markupVenda").textContent = money(mv);
   document.getElementById("markupLucro").textContent = money(mv - mc);
   document.getElementById("markupReal").textContent = pct(mp);
-  document.getElementById("markupFator").textContent = factor(1 + mp/100);
 
 }
 
